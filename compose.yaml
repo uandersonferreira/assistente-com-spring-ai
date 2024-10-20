@@ -1,0 +1,17 @@
+services:
+  pgvector:
+    image: 'pgvector/pgvector:pg16'
+    environment:
+      - 'POSTGRES_DB=doc_store'
+      - 'POSTGRES_PASSWORD=teste@2024'
+      - 'POSTGRES_USER=test'
+    labels:
+      - "org.springframework.boot.service-connection=postgres"
+    ports:
+      - '5432:5432'
+    volumes:
+      - doc_store_data:/var/lib/postgresql/data
+
+
+volumes:
+  doc_store_data:
